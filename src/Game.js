@@ -3,7 +3,7 @@ import SelectN from "./SelectN.js";
 
 class Game{
 	selectN = null;
-	status = 0; // 0 : init, 10: start, 20: next: 90: end;
+	status = 0; // 0 : init, 10: start, 20: next, 90: end, 91: success end;
 	history = null;
 	constructor(){
 		this.init();
@@ -21,26 +21,36 @@ class Game{
 	}
 
 	restart(){
+		this.init();
 		this.status = 10;
+		this.selectN.start(3);
+		this.selectN.next();
 		this.onRestart();
 	}
 	start(){
 		console.log("Game:start");
 		this.init();
 		this.status = 10;
-		this.selectN.start(30);
+		this.selectN.start(3);
 		this.selectN.next();
 		this.onStart();
 	}
 
 	next(){
+		if(this.status == 10 || this.status == 20){
+			if(this.selectN.trueCnt==1){ // 마지막
+				this.status = 91;
+				this.end(91);
+				return;
+			}
+		}
 		this.selectN.next();
 		this.status = 20;
 		this.onNext();
 	}
 
-	end(){
-		this.status = 90;
+	end(status = 90){
+		this.status = status;
 		this.onEnd();
 	}
 	draw(){
