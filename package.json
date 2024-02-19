@@ -1,0 +1,10 @@
+{
+  "name": "game_select_n",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+
+  "author": "공대여자",
+  "license": "SEE LICENSE IN LICENSE",
+  "description": ""
+}
