@@ -5,6 +5,7 @@ class Game{
 	selectN = null;
 	status = 0; // 0 : init, 10: start, 20: next, 90: end, 91: success end;
 	history = null;
+	len = null;
 	constructor(){
 		this.init();
 		// this.hello();
@@ -21,17 +22,15 @@ class Game{
 	}
 
 	restart(){
-		this.init();
-		this.status = 10;
-		this.selectN.start(3);
-		this.selectN.next();
 		this.onRestart();
+		this.start(this.len);
 	}
-	start(){
+	start(len = 10){
 		console.log("Game:start");
 		this.init();
 		this.status = 10;
-		this.selectN.start(3);
+		this.len = len;
+		this.selectN.start(len);
 		this.selectN.next();
 		this.onStart();
 	}

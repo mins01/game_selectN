@@ -22,7 +22,7 @@ game.onNext = function(){
 }
 game.onEnd = function(){
     console.log('End');
-    console.log('history',game.history);
+    console.log('history',JSON.stringify(game.history));
     console.log('successChance',(this.successChance()*100).toFixed(2)+'%');
     console.log('lastChance',(this.lastChance()*100).toFixed(2)+'%');
     
