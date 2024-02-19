@@ -11,6 +11,8 @@ game.onStart = function(){
     let percent = (this.chance()*100).toFixed(2)+'%';
     console.log(`지정된 범위 안의 숫자를 선택하세요.[0 - ${idx}](확률:${percent})`);
 }
+game.onRstart = game.onStart;
+
 game.onNext = function(){
     console.log('onNext');
     let idx = this.selectN.len -1;
@@ -24,6 +26,11 @@ game.onEnd = function(){
     console.log('successChance',(this.successChance()*100).toFixed(2)+'%');
     console.log('lastChance',(this.lastChance()*100).toFixed(2)+'%');
     
+    if(game.status==91){ //완주 성공
+        console.log('SUCCESS!!');
+    }else{
+        console.log('FAIL!!');
+    }
     process.exit();
 }
 game.onDraw = function(){
